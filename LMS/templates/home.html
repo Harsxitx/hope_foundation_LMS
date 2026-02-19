@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}EduVision | LMS Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <h1>Empowering Your Future Through Education</h1>
+            <p>Discover top courses, expert instructors, and a dashboard that helps students track their learning journey.</p>
+            <div class="hero-actions">
+                <a class="btn" href="{% url 'student_register' %}">Register Now</a>
+                <a class="btn btn-outline" href="{% url 'student_login' %}">Student Login</a>
+                <a class="btn btn-outline" href="{% url 'admin_login' %}">Admin Access</a>
+            </div>
+        </div>
+        <div class="hero-portrait"></div>
+    </div>
+</section>
+
+<section class="feature-bar">
+    <div class="container panel">
+        <div class="feature-grid">
+            <article class="feature-item">
+                <div class="feature-row">
+                    <span class="feature-title">01</span>
+                    <h3>Explore Courses</h3>
+                </div>
+                <p>Learn from a wide range of subjects.</p>
+            </article>
+            <article class="feature-item">
+                <div class="feature-row">
+                    <span class="feature-title">02</span>
+                    <h3>Flexible Learning</h3>
+                </div>
+                <p>Study at your own pace, anywhere.</p>
+            </article>
+            <article class="feature-item">
+                <div class="feature-row">
+                    <span class="feature-title">03</span>
+                    <h3>Certified Programs</h3>
+                </div>
+                <p>Earn industry-recognized certifications.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container split">
+        <div>
+            <h2 class="section-title">About EduVision</h2>
+            <h3>Shaping Minds, Shaping Futures</h3>
+            <p>We are dedicated to high-quality education and helping students build practical skills for successful careers.</p>
+        </div>
+        <div class="about-shot"></div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Our Top Programs</h2>
+        <div class="cards">
+            <article class="card">
+                <div class="card-visual c1"></div>
+                <div class="card-body">
+                    <h3>Data Science Essentials</h3>
+                    <p class="muted">Python, statistics, and machine learning basics.</p>
+                    <a class="btn btn-sm" href="{% url 'student_login' %}">Learn More</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-visual c2"></div>
+                <div class="card-body">
+                    <h3>Digital Marketing Mastery</h3>
+                    <p class="muted">SEO, paid campaigns, and analytics.</p>
+                    <a class="btn btn-sm" href="{% url 'student_login' %}">Learn More</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-visual c3"></div>
+                <div class="card-body">
+                    <h3>Business Management</h3>
+                    <p class="muted">Leadership, operations, and strategy.</p>
+                    <a class="btn btn-sm" href="{% url 'student_login' %}">Learn More</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-visual c4"></div>
+                <div class="card-body">
+                    <h3>Web Development Bootcamp</h3>
+                    <p class="muted">Frontend and backend full-stack skills.</p>
+                    <a class="btn btn-sm" href="{% url 'student_login' %}">Learn More</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Meet Our Instructors</h2>
+        <div class="cards">
+            <article class="card">
+                <div class="card-visual i1"></div>
+                <div class="card-body">
+                    <h3>Dr. Sarah Lewis</h3>
+                    <p>Business Expert</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-visual i2"></div>
+                <div class="card-body">
+                    <h3>James Carter</h3>
+                    <p>Tech Mentor</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-visual i3"></div>
+                <div class="card-body">
+                    <h3>Prof. Lisa Nguyen</h3>
+                    <p>Marketing Specialist</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-visual i4"></div>
+                <div class="card-body">
+                    <h3>Michael Roberts</h3>
+                    <p>Data Scientist</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}

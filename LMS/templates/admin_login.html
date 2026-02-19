@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login | EduVision{% endblock %}
+
+{% block content %}
+<section class="auth-shell">
+    <div class="auth-card">
+        <h1>Admin Login</h1>
+        <p>Login to manage student accounts and update course data.</p>
+        <form method="post" class="form-grid">
+            {% csrf_token %}
+            <div>
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" required />
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" required />
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <a href="{% url 'home' %}">Back to Home</a>
+        </form>
+    </div>
+</section>
+{% endblock %}

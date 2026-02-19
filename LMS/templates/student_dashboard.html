@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Student Dashboard | EduVision{% endblock %}
+
+{% block content %}
+<section class="content-wrap">
+    <div class="container">
+        <h1>Welcome, {{ request.user.first_name|default:request.user.username }}</h1>
+        <p>Your personalized LMS dashboard.</p>
+
+        <div class="stat-grid">
+            <article class="stat">
+                <h4>User ID</h4>
+                <strong>{{ request.user.id }}</strong>
+            </article>
+            <article class="stat">
+                <h4>Course</h4>
+                <strong>{{ profile.course_name|default:"-" }}</strong>
+            </article>
+            <article class="stat">
+                <h4>Duration</h4>
+                <strong>{{ profile.course_duration|default:"-" }}</strong>
+            </article>
+            <article class="stat">
+                <h4>Progress</h4>
+                <strong>{{ profile.progress_percent }}%</strong>
+            </article>
+        </div>
+
+        <section class="panel" style="padding: 22px;">
+            <h2>Profile Details</h2>
+            <p><span class="tag">Username</span> {{ request.user.username }}</p>
+            <p><span class="tag">Name</span> {{ request.user.first_name }} {{ request.user.last_name }}</p>
+            <p><span class="tag">Email</span> {{ request.user.email|default:"-" }}</p>
+            <p><span class="tag">Notes</span> {{ profile.notes|default:"-" }}</p>
+            <a class="btn" href="{% url 'logout' %}">Logout</a>
+        </section>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Student Registration | EduVision{% endblock %}
+
+{% block content %}
+<section class="content-wrap">
+    <div class="container">
+        <div class="auth-card" style="width: min(980px, 100%); margin: 0 auto;">
+            <h1>Student Registration Form</h1>
+            <p>Fill all relevant details. Admin will review and create your User ID and Password.</p>
+            <form method="post" class="form-grid">
+                {% csrf_token %}
+                {% for section_title, fields in sections %}
+                    <section class="form-section">
+                        <h2>{{ section_title }}</h2>
+                        <div class="grid-2">
+                            {% for field in fields %}
+                                <div class="{% if field.type == 'textarea' %}full-row{% endif %}">
+                                    <label for="{{ field.name }}">{{ field.label }}</label>
+                                    {% if field.type == "textarea" %}
+                                        <textarea id="{{ field.name }}" name="{{ field.name }}"></textarea>
+                                    {% elif field.type == "select" %}
+                                        <select id="{{ field.name }}" name="{{ field.name }}" {% if field.required %}required{% endif %}>
+                                            <option value="">Select</option>
+                                            {% for option in field.options %}
+                                                <option value="{{ option }}">{{ option }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    {% else %}
+                                        <input
+                                            id="{{ field.name }}"
+                                            type="{{ field.type }}"
+                                            name="{{ field.name }}"
+                                            {% if field.required %}required{% endif %}
+                                        />
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                {% endfor %}
+                <button type="submit" class="btn">Submit Registration</button>
+                <a href="{% url 'home' %}">Back to Home</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

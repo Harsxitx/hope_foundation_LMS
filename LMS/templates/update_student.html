@@ -1,0 +1,61 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Update Student | EduVision{% endblock %}
+
+{% block content %}
+<section class="content-wrap">
+    <div class="container">
+        <div class="auth-card" style="width: min(760px, 100%); margin: 0 auto;">
+            <h1>Update Student</h1>
+            <p>User ID: <strong>{{ student_user.id }}</strong> | Username: <strong>{{ student_user.username }}</strong></p>
+
+            <form method="post" class="form-grid">
+                {% csrf_token %}
+
+                <div>
+                    <label for="password">New Password (optional)</label>
+                    <input id="password" type="password" name="password" />
+                </div>
+
+                <div>
+                    <label for="first_name">First Name</label>
+                    <input id="first_name" type="text" name="first_name" value="{{ student_user.first_name }}" />
+                </div>
+
+                <div>
+                    <label for="last_name">Last Name</label>
+                    <input id="last_name" type="text" name="last_name" value="{{ student_user.last_name }}" />
+                </div>
+
+                <div>
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" value="{{ student_user.email }}" />
+                </div>
+
+                <div>
+                    <label for="course_name">Course Name</label>
+                    <input id="course_name" type="text" name="course_name" value="{{ profile.course_name }}" />
+                </div>
+
+                <div>
+                    <label for="course_duration">Course Duration</label>
+                    <input id="course_duration" type="text" name="course_duration" value="{{ profile.course_duration }}" />
+                </div>
+
+                <div>
+                    <label for="progress_percent">Progress (%)</label>
+                    <input id="progress_percent" type="number" min="0" max="100" name="progress_percent" value="{{ profile.progress_percent }}" />
+                </div>
+
+                <div>
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes">{{ profile.notes }}</textarea>
+                </div>
+
+                <button type="submit" class="btn">Update Student</button>
+                <a href="{% url 'admin_dashboard' %}">Back to Admin Dashboard</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

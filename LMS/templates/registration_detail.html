@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Registration Details | EduVision{% endblock %}
+
+{% block content %}
+<section class="content-wrap">
+    <div class="container">
+        <div class="panel" style="padding: 20px;">
+            <h1>Registration Details</h1>
+            <p>Registration ID: <strong>{{ registration.id }}</strong></p>
+            <p>Submitted At: <strong>{{ registration.submitted_at|date:"Y-m-d H:i" }}</strong></p>
+            <p>
+                Status:
+                {% if registration.account_created %}
+                    <span class="tag">Credentials Created (User ID: {{ registration.created_user.id }})</span>
+                {% else %}
+                    <span class="tag">Pending Credentials</span>
+                {% endif %}
+            </p>
+            <p>
+                <a class="btn btn-sm" href="{% url 'admin_dashboard' %}">Back to Admin Dashboard</a>
+                {% if not registration.account_created %}
+                    <a class="btn btn-sm" href="{% url 'create_credentials_for_registration' registration.id %}">Create Credentials</a>
+                {% endif %}
+            </p>
+        </div>
+
+        {% for section_title, fields in display_sections %}
+            <section class="panel" style="padding: 20px; margin-top: 14px;">
+                <h2>{{ section_title }}</h2>
+                <div class="grid-2">
+                    {% for field_label, value in fields %}
+                        <div>
+                            <p><strong>{{ field_label }}:</strong></p>
+                            <p>{{ value|default:"-" }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
